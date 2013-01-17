@@ -64,11 +64,11 @@ if __name__ == '__main__':
     app = Blog()
     static_path = os.path.join(os.path.dirname(__file__), STATIC_FOLDER)
     # Apply a wrapper around the callable application.
-    #app.application = SharedDataMiddleware(
-    #                        app.application, 
-    #                        {
-    #                            '/static': static_path, 
-    #                        })
+    app.application = SharedDataMiddleware(
+                            app.application, 
+                            {
+                                '/static': static_path, 
+                            })
     run_simple(
         HOST, PORT, app, use_debugger=True,
         use_reloader=True)
